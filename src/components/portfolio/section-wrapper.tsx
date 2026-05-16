@@ -39,14 +39,14 @@ export function SectionHeader({
       transition={{ duration: 0.5 }}
       className="mb-12 md:mb-16"
     >
-      <span className="inline-block text-xs font-mono tracking-widest text-zinc-500 uppercase mb-3">
+      <span className="inline-block text-xs font-mono tracking-widest dark:text-zinc-500 text-zinc-400 uppercase mb-3">
         {label}
       </span>
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight gradient-text mb-4">
         {title}
       </h2>
       {description && (
-        <p className="text-zinc-500 max-w-2xl text-base md:text-lg leading-relaxed">
+        <p className="dark:text-zinc-500 text-zinc-500 max-w-2xl text-base md:text-lg leading-relaxed">
           {description}
         </p>
       )}

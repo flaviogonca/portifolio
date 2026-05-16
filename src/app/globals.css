@@ -45,7 +45,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.985 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -121,22 +121,34 @@
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* Custom scrollbar - Dark */
+.dark ::-webkit-scrollbar {
   width: 6px;
 }
-
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: #09090b;
 }
-
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: #27272a;
   border-radius: 3px;
 }
-
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
+}
+
+/* Custom scrollbar - Light */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
 }
 
 /* Smooth scroll */
@@ -144,49 +156,92 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom selection */
-::selection {
+/* Custom selection - Dark */
+.dark ::selection {
   background: rgba(255, 255, 255, 0.12);
   color: #fafafa;
 }
 
-/* Glow effects */
-.glow-white {
+/* Custom selection - Light */
+::selection {
+  background: rgba(0, 0, 0, 0.08);
+  color: #18181b;
+}
+
+/* Glow effects - Dark */
+.dark .glow-white {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.06), 0 0 40px rgba(255, 255, 255, 0.03);
 }
 
-.glow-border {
+.glow-white {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06), 0 0 40px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glow-border {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 20px rgba(255, 255, 255, 0.03);
 }
 
-/* Glass effect */
-.glass {
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Glass effect - Dark */
+.dark .glass {
   background: rgba(24, 24, 27, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.glass-card {
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Glass card - Dark */
+.dark .glass-card {
   background: rgba(24, 24, 27, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Gradient text */
-.gradient-text {
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient text - Dark */
+.dark .gradient-text {
   background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Grid pattern */
-.grid-pattern {
+.gradient-text {
+  background: linear-gradient(135deg, #18181b 0%, #52525b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid pattern - Dark */
+.dark .grid-pattern {
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -231,14 +286,20 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Shimmer */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-shimmer {
+/* Shimmer - Dark */
+.dark .animate-shimmer {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.04), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

@@ -12,42 +12,45 @@ import {
   Loader2,
 } from "lucide-react";
 import { useState, FormEvent } from "react";
-
-const contactInfo = [
-  {
-    icon: Phone,
-    label: "Telefone",
-    value: "(+244) 930 177 216",
-    href: "tel:+244930177216",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "flaviomalungo0@gmail.com",
-    href: "mailto:flaviomalungo0@gmail.com",
-  },
-  {
-    icon: MapPin,
-    label: "Localização",
-    value: "Talatona, Luanda, Angola",
-    href: null,
-  },
-];
-
-const socialLinks = [
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/fl%C3%A1vio-goncalves-software-developer",
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    href: "https://github.com/flaviogoncalves",
-  },
-];
+import { useLanguage } from "@/lib/i18n/language-provider";
 
 export function ContactSection() {
+  const { t } = useLanguage();
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      label: t.contact.phone,
+      value: "(+244) 930 177 216",
+      href: "tel:+244930177216",
+    },
+    {
+      icon: Mail,
+      label: t.contact.email,
+      value: "flaviomalungo0@gmail.com",
+      href: "mailto:flaviomalungo0@gmail.com",
+    },
+    {
+      icon: MapPin,
+      label: t.contact.location,
+      value: "Talatona, Luanda, Angola",
+      href: null,
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/fl%C3%A1vio-goncalves-software-developer",
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com/flaviogoncalves",
+    },
+  ];
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -71,14 +74,14 @@ export function ContactSection() {
       });
 
       if (!res.ok) {
-        throw new Error("Erro ao enviar mensagem");
+        throw new Error("Error");
       }
 
       setSent(true);
       setFormState({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSent(false), 4000);
     } catch {
-      setError("Não foi possível enviar a mensagem. Tente novamente.");
+      setError(t.contact.errorMessage);
     } finally {
       setSending(false);
     }
@@ -86,14 +89,13 @@ export function ContactSection() {
 
   return (
     <SectionWrapper id="contact" className="relative">
-      {/* Subtle gradient bg */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-zinc-950/30 to-[#09090b]" />
+      <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-[#09090b] dark:via-zinc-950/30 dark:to-[#09090b] bg-gradient-to-b from-white via-zinc-50/30 to-white" />
 
       <div className="relative z-10">
         <SectionHeader
-          label="Contato"
-          title="Vamos conversar"
-          description="Interessado em trabalhar juntos? Entre em contato e vamos discutir como posso contribuir para o seu projeto."
+          label={t.contact.label}
+          title={t.contact.title}
+          description={t.contact.description}
         />
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
@@ -105,32 +107,31 @@ export function ContactSection() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-2 space-y-6"
           >
-            {/* Contact details */}
             <div className="space-y-4">
               {contactInfo.map((item) => (
                 <div
                   key={item.label}
-                  className="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/[0.06] transition-all duration-300"
+                  className="glass-card rounded-xl p-4 flex items-center gap-4 group dark:hover:bg-white/[0.06] hover:bg-zinc-900/[0.04] transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-zinc-800/80 flex items-center justify-center group-hover:bg-zinc-700/80 transition-colors">
+                  <div className="w-10 h-10 rounded-lg dark:bg-zinc-800/80 bg-zinc-100/80 flex items-center justify-center group-hover:dark:bg-zinc-700/80 group-hover:bg-zinc-200/80 transition-colors">
                     <item.icon
                       size={16}
-                      className="text-zinc-400 group-hover:text-white transition-colors"
+                      className="dark:text-zinc-400 text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-900 transition-colors"
                     />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-wider">
+                    <div className="text-[10px] font-mono dark:text-zinc-600 text-zinc-400 uppercase tracking-wider">
                       {item.label}
                     </div>
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-sm text-zinc-300 hover:text-white transition-colors"
+                        className="text-sm dark:text-zinc-300 text-zinc-600 hover:dark:text-white hover:text-zinc-900 transition-colors"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <span className="text-sm text-zinc-300">{item.value}</span>
+                      <span className="text-sm dark:text-zinc-300 text-zinc-600">{item.value}</span>
                     )}
                   </div>
                 </div>
@@ -145,12 +146,12 @@ export function ContactSection() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-card w-11 h-11 rounded-xl flex items-center justify-center hover:bg-white/[0.08] transition-all duration-300 group"
+                  className="glass-card w-11 h-11 rounded-xl flex items-center justify-center dark:hover:bg-white/[0.08] hover:bg-zinc-900/[0.06] transition-all duration-300 group"
                   aria-label={link.label}
                 >
                   <link.icon
                     size={18}
-                    className="text-zinc-500 group-hover:text-white transition-colors"
+                    className="dark:text-zinc-500 text-zinc-400 group-hover:dark:text-white group-hover:text-zinc-900 transition-colors"
                   />
                 </a>
               ))}
@@ -171,8 +172,8 @@ export function ContactSection() {
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-wider block mb-2">
-                    Nome
+                  <label className="text-[10px] font-mono dark:text-zinc-600 text-zinc-400 uppercase tracking-wider block mb-2">
+                    {t.contact.formName}
                   </label>
                   <input
                     type="text"
@@ -181,13 +182,13 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, name: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 text-sm bg-zinc-900/60 border border-zinc-800 rounded-lg text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-                    placeholder="Seu nome"
+                    className="w-full px-4 py-2.5 text-sm dark:bg-zinc-900/60 bg-white/80 dark:border-zinc-800 border-zinc-200 border rounded-lg dark:text-zinc-200 text-zinc-800 dark:placeholder:text-zinc-700 placeholder:text-zinc-400 focus:outline-none dark:focus:border-zinc-600 focus:border-zinc-400 dark:focus:ring-1 dark:focus:ring-zinc-600 focus:ring-1 focus:ring-zinc-400 transition-all"
+                    placeholder={t.contact.formNamePlaceholder}
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-wider block mb-2">
-                    Email
+                  <label className="text-[10px] font-mono dark:text-zinc-600 text-zinc-400 uppercase tracking-wider block mb-2">
+                    {t.contact.formEmail}
                   </label>
                   <input
                     type="email"
@@ -196,15 +197,15 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, email: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 text-sm bg-zinc-900/60 border border-zinc-800 rounded-lg text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-                    placeholder="seu@email.com"
+                    className="w-full px-4 py-2.5 text-sm dark:bg-zinc-900/60 bg-white/80 dark:border-zinc-800 border-zinc-200 border rounded-lg dark:text-zinc-200 text-zinc-800 dark:placeholder:text-zinc-700 placeholder:text-zinc-400 focus:outline-none dark:focus:border-zinc-600 focus:border-zinc-400 dark:focus:ring-1 dark:focus:ring-zinc-600 focus:ring-1 focus:ring-zinc-400 transition-all"
+                    placeholder={t.contact.formEmailPlaceholder}
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-wider block mb-2">
-                  Assunto
+                <label className="text-[10px] font-mono dark:text-zinc-600 text-zinc-400 uppercase tracking-wider block mb-2">
+                  {t.contact.formSubject}
                 </label>
                 <input
                   type="text"
@@ -213,14 +214,14 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormState({ ...formState, subject: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 text-sm bg-zinc-900/60 border border-zinc-800 rounded-lg text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-                  placeholder="Assunto da mensagem"
+                  className="w-full px-4 py-2.5 text-sm dark:bg-zinc-900/60 bg-white/80 dark:border-zinc-800 border-zinc-200 border rounded-lg dark:text-zinc-200 text-zinc-800 dark:placeholder:text-zinc-700 placeholder:text-zinc-400 focus:outline-none dark:focus:border-zinc-600 focus:border-zinc-400 dark:focus:ring-1 dark:focus:ring-zinc-600 focus:ring-1 focus:ring-zinc-400 transition-all"
+                  placeholder={t.contact.formSubjectPlaceholder}
                 />
               </div>
 
               <div>
-                <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-wider block mb-2">
-                  Mensagem
+                <label className="text-[10px] font-mono dark:text-zinc-600 text-zinc-400 uppercase tracking-wider block mb-2">
+                  {t.contact.formMessage}
                 </label>
                 <textarea
                   required
@@ -229,19 +230,19 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormState({ ...formState, message: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 text-sm bg-zinc-900/60 border border-zinc-800 rounded-lg text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all resize-none"
-                  placeholder="Descreva o seu projeto ou ideia..."
+                  className="w-full px-4 py-2.5 text-sm dark:bg-zinc-900/60 bg-white/80 dark:border-zinc-800 border-zinc-200 border rounded-lg dark:text-zinc-200 text-zinc-800 dark:placeholder:text-zinc-700 placeholder:text-zinc-400 focus:outline-none dark:focus:border-zinc-600 focus:border-zinc-400 dark:focus:ring-1 dark:focus:ring-zinc-600 focus:ring-1 focus:ring-zinc-400 transition-all resize-none"
+                  placeholder={t.contact.formMessagePlaceholder}
                 />
               </div>
 
               <div className="flex items-center justify-between gap-4">
                 {sent && (
-                  <span className="text-sm text-emerald-400 font-medium">
-                    Mensagem enviada com sucesso!
+                  <span className="text-sm text-emerald-500 font-medium">
+                    {t.contact.successMessage}
                   </span>
                 )}
                 {error && (
-                  <span className="text-sm text-red-400 font-medium">
+                  <span className="text-sm text-red-500 font-medium">
                     {error}
                   </span>
                 )}
@@ -250,14 +251,14 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-zinc-900 font-medium text-sm rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 dark:bg-white bg-zinc-900 dark:text-zinc-900 text-white font-medium text-sm rounded-lg dark:hover:bg-zinc-200 hover:bg-zinc-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {sending ? (
                     <Loader2 size={16} className="animate-spin" />
                   ) : (
                     <Send size={16} />
                   )}
-                  Enviar
+                  {t.contact.formSend}
                 </button>
               </div>
             </form>

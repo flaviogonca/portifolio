@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 export function AnimatedGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,6 +16,8 @@ export function AnimatedGrid() {
 
     let animationId: number;
     let dots: { x: number; y: number; vx: number; vy: number; size: number }[] = [];
+
+    const isDark = document.documentElement.classList.contains("dark");
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -32,10 +36,12 @@ export function AnimatedGrid() {
     };
 
     const draw = () => {
+      const currentDark = document.documentElement.classList.contains("dark");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw grid
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+      // Grid color
+      const gridColor = currentDark ? "rgba(255, 255, 255, 0.02)" : "rgba(0, 0, 0, 0.04)";
+      ctx.strokeStyle = gridColor;
       ctx.lineWidth = 0.5;
       const gridSize = 60;
 
@@ -53,7 +59,8 @@ export function AnimatedGrid() {
         ctx.stroke();
       }
 
-      // Draw and animate dots
+      // Dots
+      const dotColor = currentDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)";
       dots.forEach((dot) => {
         dot.x += dot.vx;
         dot.y += dot.vy;
@@ -63,11 +70,12 @@ export function AnimatedGrid() {
 
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+        ctx.fillStyle = dotColor;
         ctx.fill();
       });
 
-      // Draw connections
+      // Connections
+      const connBase = currentDark ? 255 : 0;
       dots.forEach((a, i) => {
         dots.slice(i + 1).forEach((b) => {
           const dx = a.x - b.x;
@@ -77,7 +85,8 @@ export function AnimatedGrid() {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.03 * (1 - dist / 150)})`;
+            const alpha = 0.03 * (1 - dist / 150);
+            ctx.strokeStyle = `rgba(${connBase}, ${connBase}, ${connBase}, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -99,7 +108,7 @@ export function AnimatedGrid() {
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

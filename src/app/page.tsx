@@ -12,7 +12,7 @@ import { Footer } from "@/components/portfolio/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#09090b]">
+    <div className="min-h-screen flex flex-col dark:bg-[#09090b] bg-white">
       <Navbar />
       <main className="flex-1">
         <HeroSection />

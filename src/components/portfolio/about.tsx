@@ -2,50 +2,34 @@
 
 import { motion } from "framer-motion";
 import { SectionWrapper, SectionHeader } from "./section-wrapper";
-
-const badges = [
-  "Backend Engineering",
-  "System Design",
-  "APIs",
-  "Cloud",
-  "DevOps",
-  "CI/CD",
-  "Observabilidade",
-  "Arquitetura",
-  "Segurança",
-  "Liderança Técnica",
-];
-
-const highlights = [
-  {
-    icon: "⚡",
-    title: "Visão de Arquitetura",
-    description: "Design de sistemas com foco em escalabilidade e manutenibilidade",
-  },
-  {
-    icon: "🔧",
-    title: "Execução Prática",
-    description: "Implementação hands-on com padrões de engenharia modernos",
-  },
-  {
-    icon: "🤝",
-    title: "Colaboração",
-    description: "Integração entre áreas para entregar software com impacto real",
-  },
-  {
-    icon: "📊",
-    title: "Mensurabilidade",
-    description: "Soluções técnicas confiáveis e mensuráveis para o negócio",
-  },
-];
+import { useLanguage } from "@/lib/i18n/language-provider";
 
 export function AboutSection() {
+  const { t } = useLanguage();
+
+  const badges = [
+    t.about.badgeBackend,
+    t.about.badgeSystemDesign,
+    t.about.badgeAPIs,
+    t.about.badgeCloud,
+    t.about.badgeDevOps,
+    t.about.badgeCICD,
+    t.about.badgeObservability,
+    t.about.badgeArchitecture,
+    t.about.badgeSecurity,
+    t.about.badgeTechLead,
+  ];
+
+  const highlights = [
+    { icon: "⚡", title: t.about.archVision, description: t.about.archVisionDesc },
+    { icon: "🔧", title: t.about.practicalExec, description: t.about.practicalExecDesc },
+    { icon: "🤝", title: t.about.collaboration, description: t.about.collaborationDesc },
+    { icon: "📊", title: t.about.measurability, description: t.about.measurabilityDesc },
+  ];
+
   return (
     <SectionWrapper id="about">
-      <SectionHeader
-        label="Sobre"
-        title="Perfil profissional"
-      />
+      <SectionHeader label={t.about.label} title={t.about.title} />
 
       <div className="grid md:grid-cols-2 gap-8 md:gap-12">
         {/* Professional Summary */}
@@ -56,30 +40,26 @@ export function AboutSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="glass-card rounded-2xl p-6 md:p-8 h-full">
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Resumo Profissional
+            <h3 className="text-lg font-semibold dark:text-white text-zinc-900 mb-4">
+              {t.about.summaryTitle}
             </h3>
-            <p className="text-zinc-400 leading-relaxed text-sm md:text-base">
-              Profissional comprometido e inovador, com histórico em sistemas de
-              missão crítica e melhoria contínua de operações técnicas. Minha
-              abordagem combina visão de arquitetura, execução prática e
-              colaboração entre áreas para entregar software com qualidade,
-              confiabilidade e impacto real no negócio.
+            <p className="dark:text-zinc-400 text-zinc-500 leading-relaxed text-sm md:text-base">
+              {t.about.summary}
             </p>
 
-            <div className="mt-6 pt-6 border-t border-white/5">
-              <h4 className="text-sm font-medium text-zinc-300 mb-3">
-                Competências-chave
+            <div className="mt-6 pt-6 dark:border-white/5 border-zinc-200/50 border-t">
+              <h4 className="text-sm font-medium dark:text-zinc-300 text-zinc-700 mb-3">
+                {t.about.keyCompetencies}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {badges.map((badge, i) => (
                   <motion.span
-                    key={badge}
+                    key={i}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.3 }}
-                    className="px-3 py-1.5 text-xs font-medium text-zinc-300 bg-zinc-800/60 border border-zinc-700/50 rounded-lg hover:bg-zinc-700/60 hover:border-zinc-600/50 transition-all cursor-default"
+                    className="px-3 py-1.5 text-xs font-medium dark:text-zinc-300 text-zinc-600 dark:bg-zinc-800/60 bg-zinc-100/80 dark:border-zinc-700/50 border-zinc-200/80 border rounded-lg dark:hover:bg-zinc-700/60 hover:bg-zinc-200/80 dark:hover:border-zinc-600/50 hover:border-zinc-300/50 transition-all cursor-default"
                   >
                     {badge}
                   </motion.span>
@@ -99,18 +79,18 @@ export function AboutSection() {
         >
           {highlights.map((item, i) => (
             <motion.div
-              key={item.title}
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="glass-card rounded-xl p-5 hover:bg-white/[0.06] transition-all duration-300 group"
+              className="glass-card rounded-xl p-5 dark:hover:bg-white/[0.06] hover:bg-zinc-900/[0.04] transition-all duration-300 group"
             >
               <div className="text-2xl mb-3">{item.icon}</div>
-              <h4 className="text-sm font-semibold text-white mb-1.5 group-hover:gradient-text transition-all">
+              <h4 className="text-sm font-semibold dark:text-white text-zinc-900 mb-1.5 group-hover:gradient-text transition-all">
                 {item.title}
               </h4>
-              <p className="text-xs text-zinc-500 leading-relaxed">
+              <p className="text-xs dark:text-zinc-500 text-zinc-500 leading-relaxed">
                 {item.description}
               </p>
             </motion.div>

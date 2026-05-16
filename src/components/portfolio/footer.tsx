@@ -1,33 +1,36 @@
 "use client";
 
 import { ArrowUp } from "lucide-react";
-
-const quickLinks = [
-  { label: "Sobre", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experiência", href: "#experience" },
-  { label: "Contato", href: "#contact" },
-];
+import { useLanguage } from "@/lib/i18n/language-provider";
 
 const techStack = ["Next.js", "TypeScript", "Node.js", "Python", "Docker", "PostgreSQL"];
 
 export function Footer() {
+  const { t } = useLanguage();
+
+  const quickLinks = [
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.experience, href: "#experience" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
+
   return (
-    <footer className="relative border-t border-white/5 bg-[#09090b]">
+    <footer className="relative dark:border-white/5 border-zinc-200/50 border-t dark:bg-[#09090b] bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md bg-white/10 flex items-center justify-center border border-white/10">
-                <span className="text-[10px] font-bold text-white">FG</span>
+              <div className="w-6 h-6 rounded-md dark:bg-white/10 bg-zinc-900/10 flex items-center justify-center dark:border-white/10 border-zinc-900/10 border">
+                <span className="text-[10px] font-bold dark:text-white text-zinc-900">FG</span>
               </div>
-              <span className="text-sm font-medium text-zinc-400">
+              <span className="text-sm font-medium dark:text-zinc-400 text-zinc-500">
                 Flávio Goncalves
               </span>
             </div>
-            <p className="text-xs text-zinc-600">
-              Software Engineer & Back-End Developer
+            <p className="text-xs dark:text-zinc-600 text-zinc-400">
+              {t.footer.role}
             </p>
           </div>
 
@@ -37,7 +40,7 @@ export function Footer() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs text-zinc-600 hover:text-zinc-300 transition-colors"
+                className="text-xs dark:text-zinc-600 text-zinc-400 hover:dark:text-zinc-300 hover:text-zinc-600 transition-colors"
               >
                 {link.label}
               </a>
@@ -47,30 +50,29 @@ export function Footer() {
           {/* Back to top */}
           <a
             href="#hero"
-            className="w-9 h-9 rounded-lg bg-zinc-800/60 border border-zinc-700/50 flex items-center justify-center hover:bg-zinc-700/60 transition-colors group"
-            aria-label="Voltar ao topo"
+            className="w-9 h-9 rounded-lg dark:bg-zinc-800/60 bg-zinc-100/80 dark:border-zinc-700/50 border-zinc-200/80 border flex items-center justify-center dark:hover:bg-zinc-700/60 hover:bg-zinc-200/80 transition-colors group"
+            aria-label={t.footer.backToTop}
           >
             <ArrowUp
               size={14}
-              className="text-zinc-500 group-hover:text-white transition-colors"
+              className="dark:text-zinc-500 text-zinc-400 group-hover:dark:text-white group-hover:text-zinc-900 transition-colors"
             />
           </a>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-zinc-700">
-            © {new Date().getFullYear()} Flávio Goncalves. Todos os direitos
-            reservados.
+        <div className="mt-8 pt-6 dark:border-white/5 border-zinc-200/50 border-t flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs dark:text-zinc-700 text-zinc-400">
+            © {new Date().getFullYear()} Flávio Goncalves. {t.footer.copyright}
           </p>
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {techStack.map((tech, i) => (
               <span key={tech} className="flex items-center gap-2">
-                <span className="text-[10px] font-mono text-zinc-700">
+                <span className="text-[10px] font-mono dark:text-zinc-700 text-zinc-400">
                   {tech}
                 </span>
                 {i < techStack.length - 1 && (
-                  <span className="text-zinc-800">·</span>
+                  <span className="dark:text-zinc-800 text-zinc-300">·</span>
                 )}
               </span>
             ))}
