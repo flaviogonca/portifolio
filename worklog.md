@@ -1,68 +1,93 @@
+# Portfolio Worklog
+
 ---
 Task ID: 1
-Agent: Main Agent
-Task: Build professional portfolio website for Flávio Goncalves
+Agent: Main Orchestrator
+Task: Read and understand existing project state
 
 Work Log:
-- Explored project structure and verified existing dependencies (framer-motion, lucide-react, shadcn/ui all pre-installed)
-- Generated professional avatar image using AI image generation (saved to /public/avatar.png)
-- Updated layout.tsx with proper metadata, dark theme, Inter + JetBrains Mono fonts
-- Updated globals.css with premium dark theme, glassmorphism styles, custom animations, gradient text, grid pattern
-- Created Navbar component with desktop/mobile responsive navigation
-- Created SectionWrapper and SectionHeader reusable components
-- Created AnimatedGrid canvas component with particle/grid futuristic background
-- Created Hero section with animated title, subtitle, CTA buttons, avatar, and metrics cards
-- Created About section with two-column layout, badges, and technical highlights
-- Created Skills section with core skills cards, language progress bars, and competencies list
-- Created Experience section with professional timeline
-- Created Highlights/Impact section with premium cards and glow effects
-- Created Education section with academic timeline and tech tags
-- Created Contact section with form, contact info cards, and social links
-- Created Footer with logo, quick links, tech stack, and copyright
-- Created Contact API endpoint (POST /api/contact)
-- Assembled all sections in page.tsx
-- Verified lint passes with no errors
-- Verified dev server renders correctly with HTTP 200
+- Read all existing component files (navbar, hero, about, skills, experience, highlights, education, contact, footer, section-wrapper, animated-grid)
+- Read translations.ts, providers.tsx, layout.tsx, page.tsx
+- Confirmed existing i18n (PT/EN/FR) and light/dark mode infrastructure
+- Identified that components use useLanguage() hook and translation keys
 
 Stage Summary:
-- Complete portfolio website with 8 sections built
-- Dark premium theme with glassmorphism, gradients, and animations
-- Framer Motion animations throughout (scroll reveal, stagger, hover effects)
-- Responsive design for mobile, tablet, and desktop
-- Professional contact form with API endpoint
-- All content matches the user's specifications exactly
+- Project has full i18n with 3 languages and theme toggle already implemented
+- All components use glassmorphism styling pattern
+- Need to update content to 42 Luanda student focus and add new sections
 
 ---
 Task ID: 2
-Agent: Main Agent
-Task: Add multi-language support (PT, EN, FR) and light/dark mode toggle
+Agent: Subagent (full-stack-developer)
+Task: Write complete updated translations.ts with all new 42 Luanda content for PT, EN, FR
 
 Work Log:
-- Created comprehensive translation dictionaries for PT (Portuguese), EN (English), FR (French) with 100+ keys each
-- Created LanguageProvider context with localStorage persistence using React Context
-- Created useLanguage hook for easy access to translations
-- Created Providers wrapper combining next-themes ThemeProvider and LanguageProvider
-- Updated layout.tsx to use Providers wrapper, removed hardcoded dark class
-- Updated globals.css with light mode variants for all custom classes (glass, glass-card, gradient-text, grid-pattern, glow effects, scrollbar, selection)
-- Updated Navbar with: Globe language switcher dropdown (desktop + mobile), Sun/Moon theme toggle, useSyncExternalStore for mounted state
-- Updated AnimatedGrid to detect current theme and render appropriate colors
-- Updated Hero section with i18n and theme-aware classes
-- Updated About section with i18n and theme-aware classes
-- Updated Skills section with i18n and theme-aware classes
-- Updated Experience section with i18n and theme-aware classes
-- Updated Highlights section with i18n and theme-aware classes
-- Updated Education section with i18n and theme-aware classes
-- Updated Contact section with i18n and theme-aware classes
-- Updated Footer with i18n and theme-aware classes
-- Fixed lint errors (setState in useEffect replaced with useSyncExternalStore and lazy initialization)
-- Fixed import error (languageNames/languageFlags imported from translations.ts)
-- Verified lint passes clean and dev server returns HTTP 200
+- Rewrote translations.ts with new TranslationKeys type
+- Added nav links for new sections (techStack, projects, languages)
+- Updated hero with greeting, student-focused title, 42 metrics
+- Updated about with emoji+text items array
+- Added techStack section with 4 categories (systems, web, database, devops)
+- Added projects section with 6 project objects
+- Added deepDive section with 5 feature subsections (auth, game, database, chat, pm)
+- Updated experience with period fields
+- Added spokenLanguages section
+- Updated footer role to "Software Engineer Student · 42 Luanda"
+- Changed Portuguese flag from 🇧🇷 to 🇦🇴 (Angola)
 
 Stage Summary:
-- Full multi-language support with PT, EN, FR - all text translatable
-- Language switcher with flags in navbar (desktop and mobile)
-- Light/dark mode toggle with smooth transitions via next-themes
-- Light mode uses clean white backgrounds with zinc color scheme
-- Dark mode retains original premium dark aesthetic
-- Language preference persisted in localStorage
-- Theme preference persisted by next-themes
+- Complete translations.ts with 1010 lines covering all 3 languages
+- All new sections fully translated
+
+---
+Task ID: 3
+Agent: Subagent (full-stack-developer)
+Task: Create Projects component with 6 featured projects
+
+Work Log:
+- Created projects.tsx with premium card grid layout
+- Featured ft_transcendence card with Star icon and emerald accent
+- Stagger animations, tech badges, grade indicators
+- Updated about.tsx to use new items array structure
+- Updated navbar.tsx with new section links
+- Updated hero.tsx with new translation keys
+
+Stage Summary:
+- Projects component created with 6 project cards
+- About and Hero components updated to match new translations
+
+---
+Task ID: 4
+Agent: Subagent (full-stack-developer)
+Task: Create DeepDive component for ft_transcendence
+
+Work Log:
+- Created deep-dive.tsx with hero banner (score badge, team info, role)
+- 5 feature section cards in 2-column grid
+- Tech used footer bar with parsed badges
+- Created tech-stack.tsx with 4 category cards
+- Created spoken-languages.tsx with progress bars
+- Updated page.tsx with new component imports and order
+- Updated footer.tsx quick links
+
+Stage Summary:
+- DeepDive component created with premium emerald accent styling
+- TechStack and SpokenLanguages components created
+- Page structure finalized
+
+---
+Task ID: 5
+Agent: Main Orchestrator
+Task: Verify consistency, clean up, and finalize
+
+Work Log:
+- Verified all translation keys match component usage
+- Removed old skills.tsx and highlights.tsx
+- Updated footer tech stack to match new profile
+- Updated layout.tsx metadata with new role
+- Ran lint: all clean
+- Dev server returning 200
+
+Stage Summary:
+- All components verified and working
+- No lint errors
+- Page renders successfully on localhost:3000

@@ -27,10 +27,10 @@ export function HeroSection() {
   const { t } = useLanguage();
 
   const metrics = [
-    { value: "3+", label: t.hero.metricYears },
-    { value: "30%", label: t.hero.metricEfficiency },
-    { value: "7", label: t.hero.metricTeams },
-    { value: "4", label: t.hero.metricSectors },
+    { value: t.hero.metricHours, label: t.hero.metricHoursLabel },
+    { value: t.hero.metricLevel, label: t.hero.metricLevelLabel },
+    { value: t.hero.metricCore, label: t.hero.metricCoreLabel },
+    { value: t.hero.metricProjects, label: t.hero.metricProjectsLabel },
   ];
 
   return (
@@ -62,14 +62,18 @@ export function HeroSection() {
               </span>
             </motion.div>
 
+            <motion.div variants={itemVariants} className="mb-3">
+              <span className="text-lg md:text-xl dark:text-zinc-400 text-zinc-500 font-medium">
+                {t.hero.greeting}
+              </span>
+            </motion.div>
+
             <motion.h1
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 dark:text-white text-zinc-900"
             >
               {t.hero.title1}{" "}
-              <span className="gradient-text">{t.hero.titleHighlight1}</span>{" "}
-              {t.hero.title2}{" "}
-              <span className="gradient-text">{t.hero.titleHighlight2}</span>
+              <span className="gradient-text">{t.hero.titleHighlight}</span>
             </motion.h1>
 
             <motion.p
@@ -91,10 +95,10 @@ export function HeroSection() {
                 {t.hero.ctaContact}
               </a>
               <a
-                href="#experience"
+                href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 dark:border-zinc-800 border-zinc-300 dark:text-zinc-400 text-zinc-500 font-medium text-sm rounded-lg dark:hover:border-zinc-600 hover:border-zinc-400 dark:hover:text-white hover:text-zinc-900 transition-all group"
               >
-                {t.hero.ctaExperience}
+                {t.hero.ctaProjects}
                 <ArrowDown
                   size={14}
                   className="group-hover:translate-y-0.5 transition-transform"

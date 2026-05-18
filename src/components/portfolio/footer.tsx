@@ -3,15 +3,15 @@
 import { ArrowUp } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-provider";
 
-const techStack = ["Next.js", "TypeScript", "Node.js", "Python", "Docker", "PostgreSQL"];
+const techStack = ["C", "TypeScript", "Node.js", "Python", "Docker", "PostgreSQL"];
 
 export function Footer() {
   const { t } = useLanguage();
 
   const quickLinks = [
     { label: t.nav.about, href: "#about" },
-    { label: t.nav.skills, href: "#skills" },
-    { label: t.nav.experience, href: "#experience" },
+    { label: t.nav.techStack, href: "#tech-stack" },
+    { label: t.nav.projects, href: "#projects" },
     { label: t.nav.contact, href: "#contact" },
   ];
 

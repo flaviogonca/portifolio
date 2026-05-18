@@ -3,10 +3,12 @@
 import { Navbar } from "@/components/portfolio/navbar";
 import { HeroSection } from "@/components/portfolio/hero";
 import { AboutSection } from "@/components/portfolio/about";
-import { SkillsSection } from "@/components/portfolio/skills";
+import { TechStackSection } from "@/components/portfolio/tech-stack";
+import { ProjectsSection } from "@/components/portfolio/projects";
+import { DeepDiveSection } from "@/components/portfolio/deep-dive";
 import { ExperienceSection } from "@/components/portfolio/experience";
-import { HighlightsSection } from "@/components/portfolio/highlights";
 import { EducationSection } from "@/components/portfolio/education";
+import { SpokenLanguagesSection } from "@/components/portfolio/spoken-languages";
 import { ContactSection } from "@/components/portfolio/contact";
 import { Footer } from "@/components/portfolio/footer";
 
@@ -17,10 +19,12 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
+        <TechStackSection />
+        <ProjectsSection />
+        <DeepDiveSection />
         <ExperienceSection />
-        <HighlightsSection />
         <EducationSection />
+        <SpokenLanguagesSection />
         <ContactSection />
       </main>
       <Footer />

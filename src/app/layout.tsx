@@ -16,14 +16,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flávio Goncalves — Software Engineer & Back-End Developer",
+  title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
   description:
-    "Portfolio de Flávio Goncalves — Software Developer com 3+ anos de experiência em sistemas robustos, arquitetura backend e soluções escaláveis.",
+    "Portfolio de Flávio Goncalves — Software Engineer Student na 42 Luanda. 1,300+ horas de projetos hands-on, Common Core completo, fase avançada do currículo.",
   keywords: [
     "Flávio Goncalves",
     "Software Engineer",
-    "Back-End Developer",
-    "System Design",
+    "42 Luanda",
+    "Student",
+    "Full-Stack",
     "Portfolio",
     "Luanda",
     "Angola",
@@ -33,16 +34,16 @@ export const metadata: Metadata = {
     icon: "/avatar.png",
   },
   openGraph: {
-    title: "Flávio Goncalves — Software Engineer",
+    title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
     description:
-      "Construindo sistemas robustos para produtos que precisam escalar.",
+      "Software Engineer Student na 42 Luanda. 1,300+ horas de projetos, Common Core completo, fase avançada.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flávio Goncalves — Software Engineer",
+    title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
     description:
-      "Construindo sistemas robustos para produtos que precisam escalar.",
+      "Software Engineer Student na 42 Luanda. 1,300+ horas de projetos, Common Core completo, fase avançada.",
   },
 };
 

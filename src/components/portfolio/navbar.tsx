@@ -38,10 +38,11 @@ export function Navbar() {
   const navLinks = [
     { label: t.nav.home, href: "#hero" },
     { label: t.nav.about, href: "#about" },
-    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.techStack, href: "#tech-stack" },
+    { label: t.nav.projects, href: "#projects" },
     { label: t.nav.experience, href: "#experience" },
-    { label: t.nav.highlights, href: "#highlights" },
     { label: t.nav.education, href: "#education" },
+    { label: t.nav.languages, href: "#languages" },
     { label: t.nav.contact, href: "#contact" },
   ];
 
@@ -70,7 +71,7 @@ export function Navbar() {
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -137,7 +138,7 @@ export function Navbar() {
             </div>
 
             {/* Mobile controls */}
-            <div className="flex items-center gap-2 md:hidden">
+            <div className="flex items-center gap-2 lg:hidden">
               {/* Language Switcher Mobile */}
               <div className="relative">
                 <button
@@ -210,13 +211,13 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
           >
             <div
               className="absolute inset-0 dark:bg-black/60 bg-black/20 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
-            <div className="absolute top-16 left-0 right-0 glass border-b dark:border-white/5 border-zinc-200/50 p-4">
+            <div className="absolute top-16 left-0 right-0 glass border-b dark:border-white/5 border-zinc-200/50 p-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <a
