@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import { Providers } from "@/components/providers";
+import { LANGUAGE_STORAGE_KEY } from "@/lib/i18n/language-provider";
+import type { Language } from "@/lib/i18n/translations";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,11 +19,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
+  title: "Flávio Gonçalves — Software Engineer / Backend Developer Student · 42 Luanda",
   description:
-    "Portfolio de Flávio Goncalves — Software Engineer Student na 42 Luanda. 1,300+ horas de projetos hands-on, Common Core completo, fase avançada do currículo.",
+    "Portfolio de Flávio Gonçalves — Software Engineer Student na 42 Luanda. 1,300+ horas de projetos hands-on, Common Core completo, fase avançada do currículo.",
   keywords: [
-    "Flávio Goncalves",
+    "Flávio Gonçalves",
     "Software Engineer",
     "42 Luanda",
     "Student",
@@ -31,33 +34,40 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Flávio Malungo Goncalves" }],
   icons: {
-    icon: "/avatar.png",
+    icon: "/foto.png",
   },
   openGraph: {
-    title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
+    title: "Flávio Gonçalves — Software Engineer Student · 42 Luanda",
     description:
       "Software Engineer Student na 42 Luanda. 1,300+ horas de projetos, Common Core completo, fase avançada.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flávio Goncalves — Software Engineer Student · 42 Luanda",
+    title: "Flávio Gonçalves — Software Engineer Student · 42 Luanda",
     description:
       "Software Engineer Student na 42 Luanda. 1,300+ horas de projetos, Common Core completo, fase avançada.",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const savedLanguage = cookieStore.get(LANGUAGE_STORAGE_KEY)?.value;
+  const initialLanguage: Language =
+    savedLanguage === "en" || savedLanguage === "pt" || savedLanguage === "fr"
+      ? savedLanguage
+      : "pt";
+
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html lang={initialLanguage} suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers initialLanguage={initialLanguage}>{children}</Providers>
       </body>
     </html>
   );

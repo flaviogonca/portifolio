@@ -1,9 +1,18 @@
 "use client";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { LanguageProvider } from "@/lib/i18n/language-provider";
+import {
+  LanguageProvider,
+  type Language,
+} from "@/lib/i18n/language-provider";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  initialLanguage,
+}: {
+  children: React.ReactNode;
+  initialLanguage: Language;
+}) {
   return (
     <NextThemesProvider
       attribute="class"
@@ -11,7 +20,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange={false}
     >
-      <LanguageProvider>{children}</LanguageProvider>
+      <LanguageProvider initialLanguage={initialLanguage}>
+        {children}
+      </LanguageProvider>
     </NextThemesProvider>
   );
 }

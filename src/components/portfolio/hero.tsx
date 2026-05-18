@@ -117,9 +117,10 @@ export function HeroSection() {
               <div className="absolute inset-0 rounded-full dark:bg-white/5 bg-zinc-900/5 blur-3xl scale-110" />
               <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden dark:border-zinc-800 border-zinc-200 border-2 glow-white">
                 <Image
-                  src="/avatar.png"
-                  alt="Flávio Goncalves"
+                  src="/foto.png"
+                  alt="Flávio Gonçalves"
                   fill
+                  sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
                   className="object-cover"
                   priority
                 />

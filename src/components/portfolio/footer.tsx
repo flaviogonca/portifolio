@@ -26,7 +26,7 @@ export function Footer() {
                 <span className="text-[10px] font-bold dark:text-white text-zinc-900">FG</span>
               </div>
               <span className="text-sm font-medium dark:text-zinc-400 text-zinc-500">
-                Flávio Goncalves
+                Flávio Gonçalves
               </span>
             </div>
             <p className="text-xs dark:text-zinc-600 text-zinc-400">
@@ -63,7 +63,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-8 pt-6 dark:border-white/5 border-zinc-200/50 border-t flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs dark:text-zinc-700 text-zinc-400">
-            © {new Date().getFullYear()} Flávio Goncalves. {t.footer.copyright}
+            © {new Date().getFullYear()} Flávio Gonçalves. {t.footer.copyright}
           </p>
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {techStack.map((tech, i) => (

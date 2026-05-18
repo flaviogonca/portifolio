@@ -21,21 +21,24 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
-const STORAGE_KEY = "portfolio-language";
+export const LANGUAGE_STORAGE_KEY = "portfolio-language";
 
-function getInitialLanguage(): Language {
-  if (typeof window === "undefined") return "pt";
-  const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
-  if (saved && translations[saved]) return saved;
-  return "pt";
-}
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: {
+  children: ReactNode;
+  initialLanguage: Language;
+}) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem(STORAGE_KEY, lang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+
+    if (typeof document !== "undefined") {
+      document.cookie = `${LANGUAGE_STORAGE_KEY}=${encodeURIComponent(lang)}; path=/; max-age=31536000; samesite=lax`;
+    }
   };
 
   const t = translations[language];

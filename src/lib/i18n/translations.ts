@@ -1,14 +1,14 @@
-export type Language = "pt" | "en" | "fr";
+export type Language = "en" | "pt" | "fr";
 
 export const languageNames: Record<Language, string> = {
-  pt: "Português",
   en: "English",
+  pt: "Português",
   fr: "Français",
 };
 
 export const languageFlags: Record<Language, string> = {
-  pt: "🇦🇴",
   en: "🇬🇧",
+  pt: "🇵🇹",
   fr: "🇫🇷",
 };
 
@@ -194,7 +194,7 @@ const translations: Record<Language, TranslationKeys> = {
       available: "Disponível para projetos",
       greeting: "Olá, eu sou Flávio",
       title1: "Engenheiro de Software",
-      titleHighlight: "Estudante",
+      titleHighlight: " & Desenvolvedor Backend",
       subtitle:
         "Estudante na 42 Luanda — uma escola de peer-learning sem professores, sem aulas, apenas projetos reais. Mais de 1.300 horas de código hands-on, Common Core completo e agora na fase avançada do currículo. Baseado em Luanda, Angola.",
       ctaContact: "Entrar em contato",
@@ -213,27 +213,27 @@ const translations: Record<Language, TranslationKeys> = {
       title: "Sobre Mim",
       items: [
         {
-          emoji: "🎓",
+          emoji: " ",
           text: "Estudante na 42 Luanda — escola de peer-learning sem professores, sem aulas, apenas projetos reais",
         },
         {
-          emoji: "✅",
+          emoji: "  ",
           text: "Common Core completo a 100% — mais de 1.300 horas de projetos práticos",
         },
         {
-          emoji: "🚀",
+          emoji: "   ",
           text: "Atualmente na fase avançada do 42 · Nível 11.20 / 21",
         },
         {
-          emoji: "🌍",
+          emoji: " ",
           text: "Baseado em Luanda, Angola",
         },
         {
-          emoji: "🎷",
+          emoji: "  ",
           text: "Também toco instrumentos musicais — bateria incluída 🥁",
         },
         {
-          emoji: "🌱",
+          emoji: "  ",
           text: "Sempre aprendendo, sempre construindo",
         },
       ],
@@ -271,42 +271,42 @@ const translations: Record<Language, TranslationKeys> = {
           description:
             "Plataforma multiplayer em tempo real full-stack com funcionalidades sociais e autenticação moderna",
           tech: ["Node.js", "Next.js", "PostgreSQL", "Socket.IO", "Docker"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "webserv",
           description:
             "Servidor HTTP construído do zero com suporte a CGI e I/O não-bloqueante",
           tech: ["C++", "HTTP"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "cub3d",
           description:
             "Motor de labirinto 3D usando ray-casting — inspirado em Wolfenstein 3D",
           tech: ["C", "MinilibX"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Inception",
           description:
             "Infraestrutura Docker com NGINX + WordPress + MariaDB",
           tech: ["Docker", "SSL/TLS"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "minishell",
           description:
             "Shell Unix funcional construído do zero com pipes, redirecionamentos e sinais",
           tech: ["C", "Unix"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Born2beroot",
           description:
             "Configuração e hardening de servidor Linux com virtualização",
           tech: ["Linux", "VirtualBox"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
       ],
       techLabel: "Tech",
@@ -318,7 +318,7 @@ const translations: Record<Language, TranslationKeys> = {
       title: "ft_transcendence — Deep Dive",
       subtitle:
         "Uma aplicação web full-stack de nível produtivo construída em equipa de 5 na 42 Luanda.",
-      score: "125/100 ✅ com bónus",
+      score: "125/100",
       team: "Equipa: Himersus · ~245 horas",
       role: "Meu Papel: Project Manager & Backend Developer",
       roleDescription:
@@ -449,7 +449,7 @@ const translations: Record<Language, TranslationKeys> = {
         "Não foi possível enviar a mensagem. Tente novamente.",
     },
     footer: {
-      role: "Software Engineer Student · 42 Luanda",
+      role: "Engenheiro de Software / Desenvolvedor Backend",
       backToTop: "Voltar ao topo",
       copyright: "Todos os direitos reservados.",
     },
@@ -470,9 +470,9 @@ const translations: Record<Language, TranslationKeys> = {
       available: "Available for projects",
       greeting: "Hey, I'm Flávio",
       title1: "Software Engineer",
-      titleHighlight: "Student",
+      titleHighlight: "& Backend Developer",
       subtitle:
-        "Student at 42 Luanda — a peer-learning school with no teachers, no classes, only real projects. Over 1,300 hours of hands-on coding, Common Core completed, and now in the advanced phase of the curriculum. Based in Luanda, Angola.",
+        "Advanced at 42 Luanda — a peer-learning school with no teachers, no classes, only real projects. Over 1,300 hours of hands-on coding, Common Core completed, and now in the advanced phase of the curriculum. Based in Luanda, Angola.",
       ctaContact: "Get in touch",
       ctaProjects: "View projects",
       metricHours: "1,300+",
@@ -489,27 +489,27 @@ const translations: Record<Language, TranslationKeys> = {
       title: "About Me",
       items: [
         {
-          emoji: "🎓",
-          text: "Student at 42 Luanda — peer-learning school with no teachers, no classes, only real projects",
+          emoji: " ",
+          text: "Advanced at 42 Luanda — peer-learning school with no teachers, no classes, only real projects",
         },
         {
-          emoji: "✅",
+          emoji: "  ",
           text: "Common Core completed at 100% — 1,300+ hours of hands-on projects",
         },
         {
-          emoji: "🚀",
+          emoji: "   ",
           text: "Currently in the 42 Advanced phase · Level 11.20 / 21",
         },
         {
-          emoji: "🌍",
+          emoji: " ",
           text: "Based in Luanda, Angola",
         },
         {
-          emoji: "🎷",
+          emoji: "  ",
           text: "Also play musical instruments — drums included 🥁",
         },
         {
-          emoji: "🌱",
+          emoji: "  ",
           text: "Always learning, always building",
         },
       ],
@@ -547,42 +547,42 @@ const translations: Record<Language, TranslationKeys> = {
           description:
             "Full-stack real-time multiplayer platform with social features and modern auth",
           tech: ["Node.js", "Next.js", "PostgreSQL", "Socket.IO", "Docker"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "webserv",
           description:
             "HTTP server built from scratch with CGI support and non-blocking I/O",
           tech: ["C++", "HTTP"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "cub3d",
           description:
             "3D maze engine using ray-casting — inspired by Wolfenstein 3D",
           tech: ["C", "MinilibX"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Inception",
           description:
             "Docker infrastructure with NGINX + WordPress + MariaDB",
           tech: ["Docker", "SSL/TLS"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "minishell",
           description:
             "Functional Unix shell from scratch with pipes, redirections and signals",
           tech: ["C", "Unix"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Born2beroot",
           description:
             "Linux server setup and hardening with virtualization",
           tech: ["Linux", "VirtualBox"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
       ],
       techLabel: "Tech",
@@ -594,7 +594,7 @@ const translations: Record<Language, TranslationKeys> = {
       title: "ft_transcendence — Deep Dive",
       subtitle:
         "A production-like full-stack web application built as a team of 5 at 42 Luanda.",
-      score: "125/100 ✅ with bonus",
+      score: "125/100",
       team: "Team: Himersus · ~245 hours",
       role: "My Role: Project Manager & Backend Developer",
       roleDescription:
@@ -724,7 +724,7 @@ const translations: Record<Language, TranslationKeys> = {
       errorMessage: "Unable to send message. Please try again.",
     },
     footer: {
-      role: "Software Engineer Student · 42 Luanda",
+      role: "Software Engineer / Backend Developer",
       backToTop: "Back to top",
       copyright: "All rights reserved.",
     },
@@ -745,7 +745,7 @@ const translations: Record<Language, TranslationKeys> = {
       available: "Disponible pour projets",
       greeting: "Salut, je suis Flávio",
       title1: "Ingénieur Logiciel",
-      titleHighlight: "Étudiant",
+      titleHighlight: " & Développeur Backend",
       subtitle:
         "Étudiant à 42 Luanda — une école de peer-learning sans professeurs, sans cours, uniquement des projets réels. Plus de 1 300 heures de code pratique, Common Core terminé, et maintenant dans la phase avancée du cursus. Basé à Luanda, Angola.",
       ctaContact: "Me contacter",
@@ -764,27 +764,27 @@ const translations: Record<Language, TranslationKeys> = {
       title: "À propos de moi",
       items: [
         {
-          emoji: "🎓",
+          emoji: " ",
           text: "Étudiant à 42 Luanda — école de peer-learning sans professeurs, sans cours, uniquement des projets réels",
         },
         {
-          emoji: "✅",
+          emoji: "  ",
           text: "Common Core terminé à 100 % — plus de 1 300 heures de projets pratiques",
         },
         {
-          emoji: "🚀",
+          emoji: "   ",
           text: "Actuellement en phase avancée du 42 · Niveau 11,20 / 21",
         },
         {
-          emoji: "🌍",
+          emoji: " ",
           text: "Basé à Luanda, Angola",
         },
         {
-          emoji: "🎷",
+          emoji: "  ",
           text: "Je joue aussi d'instruments de musique — batterie incluse 🥁",
         },
         {
-          emoji: "🌱",
+          emoji: "  ",
           text: "Toujours en apprentissage, toujours en construction",
         },
       ],
@@ -822,42 +822,42 @@ const translations: Record<Language, TranslationKeys> = {
           description:
             "Plateforme multiplayer en temps réel full-stack avec fonctionnalités sociales et authentification moderne",
           tech: ["Node.js", "Next.js", "PostgreSQL", "Socket.IO", "Docker"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "webserv",
           description:
             "Serveur HTTP construit de zéro avec support CGI et I/O non-bloquant",
           tech: ["C++", "HTTP"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
         {
           name: "cub3d",
           description:
             "Moteur de labyrinthe 3D utilisant le ray-casting — inspiré de Wolfenstein 3D",
           tech: ["C", "MinilibX"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Inception",
           description:
             "Infrastructure Docker avec NGINX + WordPress + MariaDB",
           tech: ["Docker", "SSL/TLS"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "minishell",
           description:
             "Shell Unix fonctionnel construit de zéro avec pipes, redirections et signaux",
           tech: ["C", "Unix"],
-          grade: "✅ Pass",
+          grade: "   Pass",
         },
         {
           name: "Born2beroot",
           description:
             "Configuration et durcissement de serveur Linux avec virtualisation",
           tech: ["Linux", "VirtualBox"],
-          grade: "✅ Bonus",
+          grade: "   Bonus",
         },
       ],
       techLabel: "Tech",
@@ -869,7 +869,7 @@ const translations: Record<Language, TranslationKeys> = {
       title: "ft_transcendence — Deep Dive",
       subtitle:
         "Une application web full-stack de niveau production construite en équipe de 5 à 42 Luanda.",
-      score: "125/100 ✅ avec bonus",
+      score: "125/100",
       team: "Équipe : Himersus · ~245 heures",
       role: "Mon Rôle : Chef de Projet & Développeur Backend",
       roleDescription:
@@ -1000,7 +1000,7 @@ const translations: Record<Language, TranslationKeys> = {
         "Impossible d'envoyer le message. Veuillez réessayer.",
     },
     footer: {
-      role: "Étudiant Ingénieur Logiciel · 42 Luanda",
+      role: "Ingénieur logiciel / Développeur backend",
       backToTop: "Retour en haut",
       copyright: "Tous droits réservés.",
     },
