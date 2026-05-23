@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,22 +13,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In production, you would integrate with an email service here
-    // (e.g., SendGrid, Resend, Nodemailer, etc.)
-    // For now, we log the message and return success
-    console.log("Contact form submission:", {
-      name,
-      email,
-      subject,
-      message,
-      timestamp: new Date().toISOString(),
+    const contact = await db.contactMessage.create({
+      data: {
+        name,
+        email,
+        subject,
+        message,
+      },
     });
 
     return NextResponse.json(
-      { success: true, message: "Mensagem recebida com sucesso" },
+      { success: true, message: "Mensagem recebida com sucesso", data: contact },
       { status: 200 }
     );
-  } catch {
+  } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Erro interno do servidor" },
       { status: 500 }

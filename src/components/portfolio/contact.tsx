@@ -27,8 +27,8 @@ export function ContactSection() {
     {
       icon: Mail,
       label: t.contact.email,
-      value: "flaviomalungo0@gmail.com",
-      href: "mailto:flaviomalungo0@gmail.com",
+      value: "fmalungo@student.42luanda.com",
+      href: "mailto:fmalungo@student.42luanda.com",
     },
     {
       icon: MapPin,

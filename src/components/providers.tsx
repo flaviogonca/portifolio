@@ -1,10 +1,8 @@
 "use client";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import {
-  LanguageProvider,
-  type Language,
-} from "@/lib/i18n/language-provider";
+import { LanguageProvider } from "@/lib/i18n/language-provider";
+import { type Language } from "@/lib/i18n/translations";
 
 export function Providers({
   children,

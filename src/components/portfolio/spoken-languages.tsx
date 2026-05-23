@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper, SectionHeader } from "./section-wrapper";
 import { useLanguage } from "@/lib/i18n/language-provider";
 
-const containerVariants = {
+const containerVariants: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -12,7 +12,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: any = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

@@ -4,8 +4,8 @@ import { useState, useEffect, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useLanguage, Language } from "@/lib/i18n/language-provider";
-import { languageNames, languageFlags } from "@/lib/i18n/translations";
+import { useLanguage } from "@/lib/i18n/language-provider";
+import { languageNames, languageFlags, Language } from "@/lib/i18n/translations";
 
 const languages: Language[] = ["pt", "en", "fr"];
 

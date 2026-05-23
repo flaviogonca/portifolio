@@ -6,7 +6,7 @@ import { AnimatedGrid } from "./animated-grid";
 import { useLanguage } from "@/lib/i18n/language-provider";
 import Image from "next/image";
 
-const containerVariants = {
+const containerVariants: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -14,7 +14,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: any = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
