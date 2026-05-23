@@ -42,12 +42,12 @@ export function ContactSection() {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/fl%C3%A1vio-goncalves-software-developer",
+      href: "https://www.linkedin.com/in/fl%C3%A1vio-gon%C3%A7alves-006637389/",
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/flaviogoncalves",
+      href: "https://github.com/flaviogonca",
     },
   ];
 
