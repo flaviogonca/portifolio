@@ -67,21 +67,11 @@ export function ContactSection() {
     setError("");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formState),
-      });
-
-      if (!res.ok) {
-        throw new Error("Error");
-      }
-
-      setSent(true);
-      setFormState({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSent(false), 4000);
-    } catch {
-      setError(t.contact.errorMessage);
+      // For static export deployment, direct contact form submission is not available
+      // Users should contact via email or other contact methods
+      setError(
+        "Contact form submission is not available. Please reach out via email or social media."
+      );
     } finally {
       setSending(false);
     }
