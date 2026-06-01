@@ -55,12 +55,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const savedLanguage = cookieStore.get(LANGUAGE_STORAGE_KEY)?.value;
-  const initialLanguage: Language =
-    savedLanguage === "en" || savedLanguage === "pt" || savedLanguage === "fr"
-      ? savedLanguage
-      : "pt";
+  let initialLanguage: Language = "pt";
+  try {
+    const cookieStore = await cookies();
+    const savedLanguage = cookieStore.get(LANGUAGE_STORAGE_KEY)?.value;
+    if (savedLanguage === "en" || savedLanguage === "pt" || savedLanguage === "fr") {
+      initialLanguage = savedLanguage;
+    }
+  } catch {
+    // If cookies can't be read (e.g., in _not-found), use default language
+    initialLanguage = "pt";
+  }
 
   return (
     <html lang={initialLanguage} suppressHydrationWarning>
